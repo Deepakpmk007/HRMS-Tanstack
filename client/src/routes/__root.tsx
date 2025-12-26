@@ -12,6 +12,7 @@ import appCss from '../styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
 import Header from '@/components/layout/Header'
+import SideNavBar from '@/components/layout/SideNavBar'
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -48,9 +49,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="w-screen h-screen flex flex-col">
         <Header />
-        {children}
+        <div className="flex">
+          <SideNavBar />
+
+          {children}
+        </div>
         <TanStackDevtools
           config={{
             position: 'bottom-right',
