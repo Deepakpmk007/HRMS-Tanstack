@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:18.0-alpine
+    container_name: hrms-db
+    environment:
+      POSTGRES_USER: deepak
+      POSTGRES_PASSWORD: deepak
+      POSTGRES_DB: hrms_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
