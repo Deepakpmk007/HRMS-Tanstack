@@ -1,7 +1,6 @@
-package server
+package main
 
 import (
-	"github.com/Deepak007/HRMS-Tanstack/config"
 	"github.com/Deepak007/HRMS-Tanstack/db"
 	"github.com/Deepak007/HRMS-Tanstack/router"
 	"github.com/gin-gonic/gin"
@@ -9,13 +8,11 @@ import (
 
 
 func main(){
-	cfg :=config.LoadEnv();
 
-	db.ConnectDB(cfg.DBURL)
-	defer db.DB.Close();
+	db.ConnectDB()
 
 	r:=gin.Default();
 	router.SerRouter(r)
 
-	r.Run(":8080");
+	r.Run(":8080")
 }
