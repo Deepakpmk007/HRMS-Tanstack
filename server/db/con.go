@@ -2,14 +2,18 @@ package db
 
 import (
 	"context"
+	"os"
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/joho/godotenv"
 )
 
 var DB *pgxpool.Pool;
 
-func ConnectDB(url string){
+func ConnectDB(){
+	godotenv.Load()
+	url := os.Getenv("DBURL")
 	ctx,cancel := context.WithTimeout(context.Background(),10*time.Second);
 	defer cancel();
 	
